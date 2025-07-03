@@ -1,0 +1,22 @@
+name: Update Doadores JSON
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Diariamente à meia-noite UTC
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install requests pandas pygithub
+      - name: Run update script
+        run: python script.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
