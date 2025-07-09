@@ -10,7 +10,7 @@ from github import GithubException
 GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxPVwi6kwvZIc9bsTljFADsVIwzC1BFrI9WBDiaC91LCuBR5nU5HV6Tioy7LbyPwmZ6UEDxk3t_2v6/pub?gid=1513229493&single=true&output=csv"
 GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
-FILE_PATH = "./dados/doador.json"  # Caminho para o novo arquivo
+FILE_PATH = "dados/doador.json"  # Caminho para o novo arquivo
 try:
     response = requests.get(GOOGLE_SHEET_URL, timeout=10)
     response.raise_for_status()  # Levanta exceção para status != 200
@@ -45,9 +45,12 @@ print(df.head().to_string())
 
 doadores = []
 for index, row in df.iterrows():
+    dat_doa = row.get('CARIMBO', '00/00/0000')
     nome = row.get('NOME', 'DESCONHECIDO')
     cpf = str(row.get('CPF', '00000000000'))
     equipamentos = [row.get('Equipamento1', ''), row.get('Equipamento2', ''), row.get('Equipamento3', '')]
+    tot_equip = row.get('TOTAL_EQUIP', '')
+    tot_doadores - row.get('UNICOS_CPF')
     for equip in equipamentos:
         if equip and str(equip).strip():
             doadores.append({
