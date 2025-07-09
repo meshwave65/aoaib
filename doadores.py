@@ -10,7 +10,7 @@ from github import GithubException
 GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9MbHQpKVlnf5_TfNK7Fb9A9C3GFAYaVwYgwz48tocy2YvGBJCYOMkvjSA3buwdcPgP2ZTbuVO7lcZ/pub?gid=78336396&single=true&output=csv"
 GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
-FILE_PATH = "data/doadores.json"  # Caminho para o novo arquivo
+FILE_PATH = "dados/doadores.json"  # Caminho para o novo arquivo
 
 def format_name(name):
     parts = name.upper().split()
@@ -42,7 +42,7 @@ doadores = []
 for index, row in df.iterrows():
     nome = row.get('NOME', 'DESCONHECIDO')
     cpf = str(row.get('CPF', '00000000000'))
-    equipamentos = [row.get('EQUIP1', ''), row.get('EQUIP2', ''), row.get('EQUIP3', '')]
+    equipamentos = [row.get('Equipamento1', ''), row.get('Equipamento2', ''), row.get('Equipamento3', '')]
     for equip in equipamentos:
         if equip and str(equip).strip():
             doadores.append({
