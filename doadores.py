@@ -12,6 +12,13 @@ GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
 FILE_PATH = "dados/doador.json"  # Caminho para o novo arquivo
 
+try:
+    response = requests.get(GOOGLE_SHEET_URL, timeout=10)
+    response.raise_for_status()  # Levanta exceção para status != 200
+except requests.exceptions.RequestException as e:
+    print(f"Erro ao baixar o CSV: {e}")
+    exit(1)
+
 def format_name(name):
     parts = name.upper().split()
     return f"{parts[0]}***{parts[-1]}" if len(parts) > 1 else name.upper()
@@ -62,11 +69,11 @@ else:
     json_data = json.dumps(doadores, ensure_ascii=False)
 
 # Enviar para GitHub
-if not DOADORES:
+if not GITHUB_TOKEN:
     print("Erro: O token 'DOADORES' não foi encontrado no ambiente.")
     exit(1)
 
-g = Github(DOADORES)
+g = Github(GITHUB_TOKEN)
 try:
     repo = g.get_repo(REPO)
     try:
