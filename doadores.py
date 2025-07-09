@@ -10,7 +10,7 @@ from github import GithubException
 GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9MbHQpKVlnf5_TfNK7Fb9A9C3GFAYaVwYgwz48tocy2YvGBJCYOMkvjSA3buwdcPgP2ZTbuVO7lcZ/pub?gid=78336396&single=true&output=csv"
 GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
-FILE_PATH = "data/doador.json"  # Caminho para o novo arquivo
+FILE_PATH = "data/doadores.json"  # Caminho para o novo arquivo
 
 def format_name(name):
     parts = name.upper().split()
