@@ -1,4 +1,4 @@
-```yaml
+
 name: Atualizar Doadores
 
 on:
@@ -41,5 +41,5 @@ jobs:
           git commit -m 'Atualização automática de doadores.json' || echo "Sem alterações para commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DOADORES }}
 ```
