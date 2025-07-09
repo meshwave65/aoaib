@@ -62,7 +62,7 @@ else:
     json_data = json.dumps(doadores, ensure_ascii=False)
 
 # Enviar para GitHub
-if not DODORES:
+if not DOADORES:
     print("Erro: O token 'DOADORES' não foi encontrado no ambiente.")
     exit(1)
 
