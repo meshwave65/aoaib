@@ -7,10 +7,10 @@ from github import Github
 from github import GithubException
 
 # Configurações
-GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9MbHQpKVlnf5_TfNK7Fb9A9C3GFAYaVwYgwz48tocy2YvGBJCYOMkvjSA3buwdcPgP2ZTbuVO7lcZ/pub?gid=78336396&single=true&output=csv"
+GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxPVwi6kwvZIc9bsTljFADsVIwzC1BFrI9WBDiaC91LCuBR5nU5HV6Tioy7LbyPwmZ6UEDxk3t_2v6/pub?gid=1513229493&single=true&output=csv"
 GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
-FILE_PATH = "dados/doadores.json"  # Caminho para o novo arquivo
+FILE_PATH = "dados/doador.json"  # Caminho para o novo arquivo
 
 def format_name(name):
     parts = name.upper().split()
@@ -80,6 +80,3 @@ try:
             repo.create_file(FILE_PATH, "Forçando atualização de doador", json_data)
 except GithubException as e:
     print(f"Erro ao acessar o repositório: {e}")
-    exit(1)
-
-print("JSON atualizado no GitHub!")
