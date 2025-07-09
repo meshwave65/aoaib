@@ -42,4 +42,3 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.DOADORES }}
-```
