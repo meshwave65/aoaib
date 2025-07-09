@@ -11,7 +11,12 @@ GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxPVwi6kwvZ
 GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
 FILE_PATH = "./dados/doador.json"  # Caminho para o novo arquivo
-
+try:
+    response = requests.get(GOOGLE_SHEET_URL, timeout=10)
+    response.raise_for_status()  # Levanta exceção para status != 200
+except requests.exceptions.RequestException as e:
+    print(f"Erro ao baixar o CSV: {e}")
+    exit(1)
 def format_name(name):
     parts = name.upper().split()
     return f"{parts[0]}***{parts[-1]}" if len(parts) > 1 else name.upper()
