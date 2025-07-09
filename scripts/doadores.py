@@ -8,7 +8,7 @@ from github import GithubException
 
 # Configurações
 GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxPVwi6kwvZIc9bsTljFADsVIwzC1BFrI9WBDiaC91LCuBR5nU5HV6Tioy7LbyPwmZ6UEDxk3t_2v6/pub?gid=1513229493&single=true&output=csv"
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("DOADORES")  # Usando o segredo DOADORES
 REPO = "meshwave65/aoaib"
 FILE_PATH = "dados/doadores.json"
 
@@ -76,7 +76,7 @@ else:
 
 # Enviar para GitHub
 if not GITHUB_TOKEN:
-    print("Erro: O token 'GITHUB_TOKEN' não foi encontrado no ambiente.")
+    print("Erro: O token 'DOADORES' não foi encontrado no ambiente.")
     exit(1)
 
 g = Github(GITHUB_TOKEN)
